@@ -1,65 +1,138 @@
-import Image from "next/image";
+/**
+ * app/page.tsx — Beranda (Public welcome page)
+ * Leads user to leaderboard, kelas list, and explains the system.
+ */
+import Link from 'next/link';
+import { getTotalStats, classes } from '@/lib/data';
 
-export default function Home() {
+export default function HomePage() {
+  const stats = getTotalStats();
+  const totalClasses = classes.length;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="space-y-10">
+      {/* Hero */}
+      <section className="overflow-hidden rounded-3xl bg-primary-container text-on-primary-container">
+        <div className="grid gap-6 p-6 sm:p-10 md:grid-cols-2 md:items-center">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest opacity-80">
+              OSIS · Divisi Kebersihan
+            </p>
+            <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
+              Pantau Kebersihan & Sitaan Kelas secara Transparan
+            </h1>
+            <p className="mt-3 max-w-prose text-sm sm:text-base opacity-90">
+              SitaanKu menampilkan status sitaan, denda, dan peringkat kebersihan setiap kelas
+              di sekolah. Data dapat diakses oleh seluruh siswa tanpa login.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/leaderboard"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary shadow-sm transition hover:brightness-110"
+              >
+                <span className="material-symbols-outlined text-lg">leaderboard</span>
+                Lihat Peringkat
+              </Link>
+              <Link
+                href="/kelas/c1"
+                className="inline-flex items-center gap-2 rounded-full bg-surface px-5 py-3 text-sm font-semibold text-primary shadow-sm transition hover:brightness-95"
+              >
+                <span className="material-symbols-outlined text-lg">school</span>
+                Lihat Data Kelas
+              </Link>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-3">
+            <StatCard label="Total Kelas" value={totalClasses} icon="school" />
+            <StatCard label="Sitaan Aktif" value={stats.totalActive} icon="inventory_2" />
+            <StatCard label="Denda Belum Lunas" value={`Rp ${(stats.totalUnpaidFines / 1000).toFixed(0)}k`} icon="payments" />
+            <StatCard label="Rata-rata Skor" value={stats.avgScore} icon="verified" />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* How it works */}
+      <section>
+        <h2 className="mb-4 text-xl font-bold">Cara Kerja Sistem</h2>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Step
+            step="1"
+            title="Pelanggaran Pertama"
+            body="Status: Peringatan. Tidak ada denda. Kelas mendapat kesempatan untuk tertib."
+            tone="warning"
+          />
+          <Step
+            step="2"
+            title="Pelanggaran Berikutnya"
+            body="Status: Denda Aktif. Denda otomatis dihitung: jumlah × Rp5.000."
+            tone="fined"
+          />
+          <Step
+            step="3"
+            title="Pengambilan Barang"
+            body="Setelah denda dibayar, OSIS mengonfirmasi. Status menjadi Selesai."
+            tone="resolved"
+          />
         </div>
-      </main>
+      </section>
+
+      {/* CTA */}
+      <section className="rounded-3xl bg-secondary-container p-6 text-on-secondary-container sm:p-8">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 className="text-lg font-bold">Cek status kelasmu sekarang</h2>
+            <p className="mt-1 text-sm opacity-90">
+              Pilih kelas di halaman peringkat untuk melihat rincian sitaan dan skor.
+            </p>
+          </div>
+          <Link
+            href="/leaderboard"
+            className="inline-flex items-center gap-2 rounded-full bg-secondary px-5 py-3 text-sm font-semibold text-on-secondary shadow-sm transition hover:brightness-110"
+          >
+            Buka Peringkat
+            <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function StatCard({ label, value, icon }: { label: string; value: string | number; icon: string }) {
+  return (
+    <div className="rounded-2xl bg-surface-container-lowest p-4 text-on-surface shadow-sm">
+      <span className="material-symbols-outlined text-primary">{icon}</span>
+      <div className="mt-2 text-2xl font-bold">{value}</div>
+      <div className="text-xs opacity-80">{label}</div>
+    </div>
+  );
+}
+
+function Step({
+  step,
+  title,
+  body,
+  tone,
+}: {
+  step: string;
+  title: string;
+  body: string;
+  tone: 'warning' | 'fined' | 'resolved';
+}) {
+  const toneClass: Record<typeof tone, string> = {
+    warning:  'bg-yellow-100  text-yellow-800  dark:bg-yellow-900/40  dark:text-yellow-200',
+    fined:    'bg-red-100     text-red-800     dark:bg-red-900/40     dark:text-red-200',
+    resolved: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200',
+  };
+  return (
+    <div className="rounded-2xl border border-outline-variant/40 bg-surface-container-low p-5">
+      <div className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full font-bold ${toneClass[tone]}`}>
+        {step}
+      </div>
+      <h3 className="font-bold">{title}</h3>
+      <p className="mt-1 text-sm text-on-surface-variant">{body}</p>
     </div>
   );
 }

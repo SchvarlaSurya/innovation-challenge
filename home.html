@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CleanProof - Bukti Nyata Kebersihan Kelasmu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "outline": "#757684",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-tertiary-container": "#ffa583",
+                      "surface-container-high": "#e8e7f1",
+                      "on-primary-container": "#a8b8ff",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#f1f0fa",
+                      "tertiary-fixed": "#ffdbce",
+                      "tertiary-container": "#872d00",
+                      "tertiary": "#611e00",
+                      "on-surface": "#1a1b22",
+                      "secondary-container": "#d0e1fb",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e3e1eb",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-bright": "#fbf8ff",
+                      "on-tertiary-fixed-variant": "#802a00",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "on-tertiary-fixed": "#380d00",
+                      "surface-tint": "#3755c3",
+                      "inverse-surface": "#2f3037",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#54647a",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c4c5d5",
+                      "surface-variant": "#e3e1eb",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-primary-fixed": "#001453",
+                      "on-primary-fixed-variant": "#173bab",
+                      "on-background": "#1a1b22",
+                      "primary-fixed": "#dde1ff",
+                      "secondary": "#505f76",
+                      "surface": "#fbf8ff",
+                      "error-container": "#ffdad6",
+                      "primary": "#00288e",
+                      "surface-dim": "#dad9e3",
+                      "background": "#fbf8ff",
+                      "primary-container": "#1e40af",
+                      "on-surface-variant": "#444653",
+                      "surface-container": "#eeedf7",
+                      "surface-container-low": "#f4f2fc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-sm": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["22px", {"lineHeight": "30px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar (Public) -->
+<header class="fixed top-0 z-50 w-full bg-surface shadow-sm h-16 flex justify-between items-center px-gutter max-w-container-max mx-auto left-0 right-0">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CleanProof</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-container transition-colors" href="#">Cari Kelas</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary-container transition-colors" href="#">Leaderboard</a>
+</nav>
+</div>
+<button class="bg-primary-container text-white px-5 py-2 rounded-lg font-bold text-body-md hover:opacity-90 active:scale-95 transition-all">
+            Login OSIS
+        </button>
+</header>
+<main class="pt-24 pb-16 px-margin-mobile md:px-0">
+<div class="max-w-[960px] mx-auto space-y-16">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="space-y-6">
+<h1 class="font-headline-xl text-headline-xl text-on-background leading-tight">
+                        Bukti nyata <span class="text-primary">kebersihan</span> kelasmu
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                        Sistem manajemen kebersihan sekolah digital untuk mendukung transparansi, disiplin, dan kebanggaan setiap kelas.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-3">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-md transition-all" placeholder="Cari nama kelas..." type="text"/>
+</div>
+<button class="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+                            Cari
+                        </button>
+</div>
+</div>
+<div class="relative hidden md:block">
+<div class="absolute -z-10 w-full h-full bg-primary/5 rounded-full blur-3xl"></div>
+<img alt="School Management" class="w-full h-80 object-cover rounded-3xl shadow-xl animate-float" data-alt="A clean, brightly lit modern high school hallway with polished floors reflecting soft ambient light. The scene features minimalist architecture with large windows and a sense of orderly academic excellence. A transparent floating shield with a checkmark logo is subtly integrated into the composition, symbolizing accountability and cleanliness in a professional corporate modernism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhLddZSx1vQr9B_OntuVQTd3UIoz4v5YdWGQl4LQn8UBUncVZtETQ3DPkyIIf1srLB7_apDe9uc-PzM81vvSqGzPtZRzMGwC_yzoaNlykvE61KD4UaUAzQeD36aEJjkBsq8n9hQdPYd3EPSFfpeNrtYkj7E8yTtHmSZwFeGqFcOfm0L5fbTrOefjBCL1ifgCuPWE0X5wRIkLEFpIYShq1tFCJEMwi1yyUxVaexIRIUtIb4GAA-STp-S1z3dTlJ5R21pp9bffX37wg"/>
+</div>
+</section>
+<!-- Stats Bar -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/30 flex items-center gap-4 group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined">meeting_room</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Total Kelas Terdaftar</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold">36 Kelas</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/30 flex items-center gap-4 group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-error-container rounded-xl flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Sitaan Aktif Hari Ini</p>
+<p class="font-headline-sm text-headline-sm text-error font-bold">12 Barang</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/30 flex items-center gap-4 group hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-on-tertiary-container rounded-xl flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Kelas Bebas Sitaan</p>
+<p class="font-headline-sm text-headline-sm text-tertiary-container font-bold">24 Kelas</p>
+</div>
+</div>
+</section>
+<!-- Leaderboard Preview -->
+<section class="space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-3">
+<span class="text-2xl">🏆</span> Top Kelas Terbersih Minggu Ini
+                    </h2>
+<a class="hidden sm:flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:underline" href="#">
+                        Lihat Leaderboard Lengkap <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+<!-- Rank 2 -->
+<div class="order-2 md:order-1 bg-surface-container p-6 rounded-2xl border-t-4 border-outline shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="bg-outline-variant text-on-surface px-3 py-1 rounded-full font-bold text-label-md">Rank 2</span>
+<span class="material-symbols-outlined text-outline text-3xl">military_tech</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-background">XII MIPA 4</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Skor: 92/100</p>
+</div>
+<div class="space-y-2">
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-outline h-full w-[92%]"></div>
+</div>
+<span class="inline-block bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">KONSISTEN</span>
+</div>
+</div>
+<!-- Rank 1 -->
+<div class="order-1 md:order-2 bg-white p-8 rounded-2xl border-t-8 border-yellow-500 shadow-xl flex flex-col gap-4 scale-105 relative z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full font-bold shadow-lg">WINNER</div>
+<div class="flex justify-between items-start">
+<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-bold text-label-md">Rank 1</span>
+<span class="material-symbols-outlined text-yellow-500 text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background">XI IPS 1</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Skor: 98/100</p>
+</div>
+<div class="space-y-2">
+<div class="w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-yellow-500 h-full w-[98%]"></div>
+</div>
+<span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">TELADAN</span>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="order-3 md:order-3 bg-surface-container p-6 rounded-2xl border-t-4 border-orange-400 shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-bold text-label-md">Rank 3</span>
+<span class="material-symbols-outlined text-orange-400 text-3xl">military_tech</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-background">X Bahasa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Skor: 89/100</p>
+</div>
+<div class="space-y-2">
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-orange-400 h-full w-[89%]"></div>
+</div>
+<span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">MENINGKAT</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center md:hidden">
+<a class="flex items-center gap-1 font-label-md text-label-md text-primary font-bold" href="#">
+                        Lihat Leaderboard Lengkap <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+<footer class="bg-surface-container-low border-t border-outline-variant py-12">
+<div class="max-w-[960px] mx-auto px-margin-mobile md:px-0 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CleanProof</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+                    Platform pengawasan kebersihan sekolah terpadu oleh OSIS untuk menciptakan lingkungan belajar yang nyaman.
+                </p>
+</div>
+<div class="flex flex-col md:items-end gap-4">
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Tentang Kami</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Panduan</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kontak</a>
+</div>
+<p class="font-label-md text-label-md text-outline">© 2024 CleanProof OSIS Core Team. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+        });
+    </script>
+</body></html>
