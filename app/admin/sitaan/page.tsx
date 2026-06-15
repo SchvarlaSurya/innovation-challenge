@@ -10,14 +10,14 @@
  * subcomponent that handles filtering (FilterBar) and rendering.
  */
 import Link from 'next/link';
-import { getAllConfiscatedItems, getAllClasses } from '@/lib/queries';
+import { getAllConfiscationsWithClass, getAllClasses } from '@/lib/queries';
 import SitaanList from '@/components/admin/SitaanList';
 
 export const dynamic = 'force-dynamic';
 
 export default async function SitaanPage() {
   const [items, classes] = await Promise.all([
-    getAllConfiscatedItems(),
+    getAllConfiscationsWithClass(),
     getAllClasses(),
   ]);
 

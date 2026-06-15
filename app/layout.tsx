@@ -1,35 +1,46 @@
 /**
- * app/layout.tsx — Root layout with navigation + Sitaanku branding
+ * app/layout.tsx — Root layout
+ * Wraps every route. PublicLayout owns nav + footer.
+ * Auth-required /admin routes are protected by proxy.ts and use the
+ * AdminSidebar/AdminTopBar from @/components/admin/AdminLayoutComponents
+ * via app/admin/layout.tsx — but RootLayout still wraps everything.
+ *
+ * To avoid double nav on /admin, we strip the global PublicLayout chrome
+ * on /admin/* paths and let app/admin/layout.tsx handle the chrome.
  */
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import { PublicNav, PublicFooter } from "@/components/PublicLayout";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import { headers } from 'next/headers';
+import PublicLayout from '@/components/PublicLayout';
+import './globals.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "SitaanKu — Sistem Manajemen Sitaan & Kebersihan",
-  description: "Platform digital untuk divisi kebersihan OSIS dalam mengelola sitaan dan penilaian kebersihan kelas.",
+  title: 'SitaanKu — Sistem Manajemen Sitaan & Kebersihan',
+  description:
+    'Platform digital untuk divisi kebersihan OSIS dalam mengelola sitaan dan penilaian kebersihan kelas.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const h = await headers();
+  const pathname = h.get('x-invoke-path') || h.get('x-pathname') || '';
+  const isAdmin = pathname.startsWith('/admin');
+
   return (
     <html lang="id" className={`${plusJakartaSans.className} h-full antialiased`}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-      </head>
       <body className="min-h-full flex flex-col bg-background text-on-background font-sans">
-        <PublicNav />
-        <main className="flex flex-1 flex-col">{children}</main>
-        {/* Footer */}
-        <PublicFooter />
+        {isAdmin ? (
+          <main className="flex flex-1 flex-col">{children}</main>
+        ) : (
+          <PublicLayout>{children}</PublicLayout>
+        )}
       </body>
     </html>
   );

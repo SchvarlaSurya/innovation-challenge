@@ -87,18 +87,189 @@
       0 4px 8px 0 rgb(0 0 0 / 0.10);
   }
   .material-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 h-10 text-sm font-semibold transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    transition: all 150ms ease;
+    border: 0;
+    cursor: pointer;
   }
+  .material-btn:active:not(:disabled) { transform: scale(0.98); }
+  .material-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
   .material-btn-filled {
-    @apply material-btn bg-primary text-on-primary hover:opacity-90 elevation-1;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow:
+      0 1px 2px 0 rgb(0 0 0 / 0.05),
+      0 1px 3px 0 rgb(0 0 0 / 0.10);
   }
+  .material-btn-filled:hover:not(:disabled) { opacity: 0.9; }
+
   .material-btn-tonal {
-    @apply material-btn bg-primary-container text-on-primary-container hover:opacity-90;
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
   }
+  .material-btn-tonal:hover:not(:disabled) { opacity: 0.9; }
+
   .material-btn-outlined {
-    @apply material-btn border border-outline text-on-surface hover:bg-surface-container-high;
+    border: 1px solid var(--color-outline);
+    color: var(--color-on-surface);
+    background-color: transparent;
   }
+  .material-btn-outlined:hover:not(:disabled) {
+    background-color: var(--color-surface-container-high);
+  }
+
   .material-btn-text {
-    @apply material-btn text-primary hover:bg-primary-container/40;
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+  .material-btn-text:hover:not(:disabled) {
+    background-color: rgb(216 226 255 / 0.4);
+  }
+
+  /* Material 3 Card surface */
+  .material-card {
+    background-color: var(--color-surface-container-lowest);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-xl);
+  }
+  .material-card-elevated {
+    background-color: var(--color-surface-container-lowest);
+    border-radius: var(--radius-xl);
+    box-shadow:
+      0 1px 2px 0 rgb(0 0 0 / 0.05),
+      0 1px 3px 0 rgb(0 0 0 / 0.10);
+  }
+
+  /* Material 3 Form fields */
+  .material-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 0.25rem;
+  }
+  .material-input {
+    width: 100%;
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-outline-variant);
+    background-color: var(--color-surface-container-lowest);
+    color: var(--color-on-surface);
+    font-size: 0.875rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+    outline: none;
+  }
+  .material-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgb(0 40 142 / 0.12);
+  }
+  .material-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  textarea.material-input {
+    height: auto;
+    min-height: 6rem;
+    border-radius: 1rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+
+  /* Material 3 chips / status badges */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .chip-rounded {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .chip-active {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .chip-default {
+    background-color: var(--color-surface-container-high);
+    color: var(--color-on-surface);
+  }
+  .chip-warning {
+    background-color: #fde68a;
+    color: #854d0e;
+  }
+  .chip-fined {
+    background-color: #fecaca;
+    color: #991b1b;
+  }
+  .chip-resolved {
+    background-color: #bbf7d0;
+    color: #166534;
+  }
+
+  /* Small button variant (used in filter bars) */
+  .btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    height: 1.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+    transition: opacity 150ms ease;
+  }
+  .btn-filled {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .btn-filled:hover { opacity: 0.9; }
+  .btn-text {
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+  .btn-text:hover { background-color: rgb(216 226 255 / 0.4); }
+
+  /* Custom scrollbar (for admin main area) */
+  .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-outline-variant);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-outline);
   }
 }

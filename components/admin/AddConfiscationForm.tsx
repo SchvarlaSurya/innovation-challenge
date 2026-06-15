@@ -132,7 +132,7 @@ export default function AddConfiscationForm({ classes }: Props) {
       <div className="p-6 border-b border-outline-variant bg-surface-container-high/30">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-primary-container text-on-primary-container rounded-lg">
-            <span className="material-symbols-outlined">edit_document</span>
+            📝
           </div>
           <div>
             <h3 className="font-bold text-on-surface">Formulir Sitaan Baru</h3>
@@ -145,13 +145,13 @@ export default function AddConfiscationForm({ classes }: Props) {
         {/* Alert Messages */}
         {error && (
           <div className="flex items-center gap-3 p-4 bg-error-container text-on-error-container rounded-xl text-sm font-semibold">
-            <span className="material-symbols-outlined">error</span>
+            ⚠️
             {error}
           </div>
         )}
         {success && (
           <div className="flex items-center gap-3 p-4 bg-secondary-container text-on-secondary-container rounded-xl text-sm font-semibold">
-            <span className="material-symbols-outlined">check_circle</span>
+            ✅
             {success}
           </div>
         )}
@@ -211,7 +211,7 @@ export default function AddConfiscationForm({ classes }: Props) {
             className="w-full px-4 py-3 bg-surface-container border border-outline-variant rounded-xl text-sm text-on-surface outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
           />
           <div className="flex items-center gap-2 mt-2 p-3 bg-tertiary-fixed/30 rounded-lg border border-tertiary-fixed-dim/20">
-            <span className="material-symbols-outlined text-tertiary text-lg">info</span>
+            ℹ️
             <p className="text-xs text-on-surface-variant">
               Estimasi denda (jika bukan peringatan pertama): <strong className="text-on-surface">{formatRupiah(previewFine)}</strong>
             </p>
@@ -243,7 +243,7 @@ export default function AddConfiscationForm({ classes }: Props) {
               </div>
             ) : (
               <div className="flex flex-col items-center gap-2 text-on-surface-variant">
-                <span className="material-symbols-outlined text-4xl">add_a_photo</span>
+                📷
                 <p className="text-sm font-semibold">Klik atau seret foto ke sini</p>
                 <p className="text-xs">JPG, PNG, atau WebP (max 5MB)</p>
               </div>
@@ -282,12 +282,12 @@ export default function AddConfiscationForm({ classes }: Props) {
         >
           {loading ? (
             <>
-              <span className="material-symbols-outlined animate-spin text-lg">progress_activity</span>
+              ⏳
               Menyimpan...
             </>
           ) : (
             <>
-              <span className="material-symbols-outlined text-lg">save</span>
+              💾
               Simpan Sitaan
             </>
           )}
